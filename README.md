@@ -1,7 +1,7 @@
-# Student Management - Starter Project
+# Student Management 
 
 ## Overview
-Simple Java Spring Boot starter project for beginners.
+Simple Java Spring Boot starter project.
 - Spring Boot (Web, Thymeleaf, Data JPA)
 - H2 in-memory database
 - CRUD operations for Student entity
