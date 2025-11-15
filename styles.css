@@ -1,0 +1,7 @@
+/* small custom styles for better visuals */
+body { background: #f8f9fa; min-height: 100vh; display:flex; flex-direction:column; }
+main.container { flex:1; }
+.table td, .table th { vertical-align: middle; }
+.navbar-brand { font-weight:600; }
+.invalid-feedback { display:block; }
+.btn-delete { cursor:pointer; }

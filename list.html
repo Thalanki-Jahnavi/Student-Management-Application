@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <h1 class="h3 mb-0">Students</h1>
+      <small class="text-muted">Manage student records</small>
+    </div>
+    <div>
+      <a class="btn btn-primary" th:href="@{/students/new}">Add Student</a>
+    </div>
+  </div>
+
+  <form class="mb-3" method="get" th:action="@{/students}">
+    <div class="input-group">
+      <input class="form-control" name="q" placeholder="Search by name" th:value="${q}">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="width:6%">ID</th>
+          <th style="width:33%">Name</th>
+          <th style="width:31%">Email</th>
+          <th style="width:18%">Course</th>
+          <th style="width:12%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="s : ${students}">
+          <td th:text="${s.id}">1</td>
+          <td th:text="${s.name}">Name</td>
+          <td th:text="${s.email}">email@example.com</td>
+          <td th:text="${s.course}">Course</td>
+          <td>
+            <a th:href="@{/students/edit/{id}(id=${s.id})}" class="btn btn-sm btn-outline-warning me-1">Edit</a>
+            <a href="#" th:attr="data-id=${s.id}" class="btn btn-sm btn-outline-danger btn-delete">Delete</a>
+          </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(students)}">
+          <td colspan="5" class="text-center text-muted">No students found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

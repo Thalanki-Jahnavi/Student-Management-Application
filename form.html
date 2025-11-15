@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 th:text="${student.id} == null ? 'Add Student' : 'Edit Student'">Form</h2>
+    </div>
+    <div class="col-md-4 text-end">
+      <a class="btn btn-secondary" th:href="@{/students}">Back to list</a>
+    </div>
+  </div>
+
+  <form th:action="@{/students/save}" th:object="${student}" method="post" id="studentForm" novalidate>
+    <input type="hidden" th:field="*{id}">
+
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input class="form-control" th:field="*{name}" id="name" required minlength="2">
+      <div class="invalid-feedback">Please enter a name (min 2 characters).</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input class="form-control" th:field="*{email}" id="email" type="email" required>
+      <div class="invalid-feedback">Please enter a valid email.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Course</label>
+      <input class="form-control" th:field="*{course}" id="course" required>
+      <div class="invalid-feedback">Please enter a course name.</div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-success">Save</button>
+      <a th:href="@{/students}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</html>
